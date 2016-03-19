@@ -1,0 +1,292 @@
+package kunjika;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+
+import javax.swing.*;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+public class j extends JFrame {
+
+	static String IMG_PATH;
+	static String IMG_PATH2 = "C:\\Users\\Kunjika\\Desktop\\cards\\" + 53 + ".jpg";
+	static ImageIcon[] array = new ImageIcon[53];
+	static ImageIcon c = new ImageIcon();
+	private ArrayList<BufferedImage> images;
+	private ArrayList<BufferedImage> images1;
+	private ArrayList<BufferedImage> images2;
+	private ArrayList<BufferedImage> images3;
+	private ArrayList<BufferedImage> images4;
+	
+    private int currentPic1 = 0;
+    private int currentPic2 = 0;
+    private int currentPic3 = 0;
+    private int currentPic4 = 0;
+    private int currentPic5 = 0;
+    
+	JFrame frame = new JFrame();
+	Random rand = new Random();
+   public static void main(String[] args) {
+	  
+	   for(int j = 0; j < 52; j++)
+     {
+	   try {
+		   IMG_PATH = "C:\\Users\\Kunjika\\Desktop\\cards\\" + (j+1) + ".jpg";
+		   BufferedImage img = ImageIO.read(new File(IMG_PATH));
+         ImageIcon icon = new ImageIcon(img);
+         array[j] = icon;
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+	   
+     }
+	   try {
+	         BufferedImage img2 = ImageIO.read(new File(IMG_PATH2));
+	         ImageIcon icon2 = new ImageIcon(img2);
+	         c = icon2;
+	        
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      }
+	   /*for(int h = 1; h < 6; h++)
+	   {
+		   c[h] = c[0];
+	   }*/
+	   //System.out.println(c[0]);
+	   j p = new j();
+   }
+
+   JButton button1 = new JButton("Next Round");
+   JButton button2 = new JButton("Next Round II");
+   int randomNumber1 = rand.nextInt((52-1)+1)+1;
+   int randomNumber2 = generateRandom(randomNumber1);
+   
+   int r1 = generateRandom(randomNumber2);
+   int r2 = generateRandom(r1);
+   int r3 = generateRandom(r2);
+   int r4 = generateRandom(r3);
+   int r5 = generateRandom(r4);
+   
+   JLabel label3 = new JLabel();
+   JLabel label4= new JLabel();
+   JLabel label5= new JLabel();
+   JLabel label6= new JLabel();
+   JLabel label7= new JLabel();
+   JPanel thepanel = new JPanel();
+   JButton switch1;
+   public j()
+   {
+	   
+	  
+	   EventQueue.invokeLater(new Runnable(){
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			try{
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			}
+			catch(ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex){
+			}
+			
+			images = new ArrayList<>(2);
+			images1 = new ArrayList<>(2);
+			images2 = new ArrayList<>(2);
+			images3 = new ArrayList<>(2);
+			images4 = new ArrayList<>(2);
+			try{
+				images.add(ImageIO.read(new File("C:\\Users\\Kunjika\\Desktop\\cards\\" + r1 + ".jpg")));
+				images.add(ImageIO.read(new File("C:\\Users\\Kunjika\\Desktop\\cards\\" + 53 + ".jpg")));
+				
+				images1.add(ImageIO.read(new File("C:\\Users\\Kunjika\\Desktop\\cards\\" + r2 + ".jpg")));
+				images1.add(ImageIO.read(new File("C:\\Users\\Kunjika\\Desktop\\cards\\" + 53 + ".jpg")));
+				
+				images2.add(ImageIO.read(new File("C:\\Users\\Kunjika\\Desktop\\cards\\" + r3 + ".jpg")));
+				images2.add(ImageIO.read(new File("C:\\Users\\Kunjika\\Desktop\\cards\\" + 53 + ".jpg")));
+				
+				
+			}
+			catch(IOException e1){ e1.printStackTrace();}
+			
+			
+			
+			button1.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					currentPic1++;
+					if(currentPic1 >= images.size()){
+						currentPic1 = 0;
+					}
+					label3.setIcon(new ImageIcon(images.get(currentPic1)));
+					
+					currentPic2++;
+					if(currentPic2 >= images1.size()){
+						currentPic2 = 0;
+					}
+					label4.setIcon(new ImageIcon(images1.get(currentPic2)));
+					
+					currentPic3++;
+					if(currentPic3 >= images2.size()){
+						currentPic3 = 0;
+					}
+					label5.setIcon(new ImageIcon(images2.get(currentPic3)));
+					
+				
+				}
+			}); 
+		}
+		   
+	   });
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   EventQueue.invokeLater(new Runnable(){
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try{
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				}
+				catch(ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex){
+				}
+				
+				
+				try{
+					images3.add(ImageIO.read(new File("C:\\Users\\Kunjika\\Desktop\\cards\\" + r4 + ".jpg")));
+					images3.add(ImageIO.read(new File("C:\\Users\\Kunjika\\Desktop\\cards\\" + 53 + ".jpg")));
+					
+					images4.add(ImageIO.read(new File("C:\\Users\\Kunjika\\Desktop\\cards\\" + r5 + ".jpg")));
+					images4.add(ImageIO.read(new File("C:\\Users\\Kunjika\\Desktop\\cards\\" + 53 + ".jpg")));
+					
+					
+					
+				}
+				catch(IOException e1){ e1.printStackTrace();}
+				
+				
+				
+				button2.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						currentPic4++;
+						if(currentPic4 >= images3.size()){
+							currentPic4 = 0;
+						}
+						label6.setIcon(new ImageIcon(images3.get(currentPic4)));
+						
+						currentPic5++;
+						if(currentPic5 >= images4.size()){
+							currentPic5 = 0;
+						}
+						label7.setIcon(new ImageIcon(images4.get(currentPic5)));
+						
+						
+					}
+				}); 
+			}
+			   
+		   });
+	   
+	   
+	   JPanel panel = new JPanel();
+	   panel.setLayout(new GridBagLayout());
+	   
+	   GridBagConstraints gbc = new GridBagConstraints();
+	   gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+	   gbc.fill = GridBagConstraints.BOTH;
+	   gbc.gridx = 0;
+	   gbc.gridy = 0;
+	   gbc.weightx = 1;
+	   gbc.weighty = 0.9;
+	   
+	   
+	   
+	   
+	   thepanel.setBorder(BorderFactory.createEmptyBorder(80,30,30,30));
+	   
+	   JPanel panel1 = new JPanel();
+	   
+	   JLabel label1 = new JLabel(array[randomNumber1]);
+	   JLabel label2 = new JLabel(array[randomNumber2]);
+	   
+	 
+	   
+	   panel1.add(label1);
+	   panel1.add(label2);
+	   
+	   panel.add(thepanel,gbc);
+	   gbc.weightx = 0.1;
+	   gbc.gridy = 1;
+	   
+	   panel.add(panel1,gbc);
+ 	  
+       //label6 = new JLabel(c);
+       //label7 = new JLabel(c);
+       thepanel.add(label3);
+       
+       
+       thepanel.add(label4);
+       thepanel.add(label5);
+       thepanel.add(label6);
+       thepanel.add(label7);
+       thepanel.setLayout(new FlowLayout(FlowLayout.CENTER,30,0));
+       panel1.setLayout(new FlowLayout(FlowLayout.CENTER,30,70));
+       frame.setContentPane(panel);
+       frame.setResizable(false);
+       frame.add(thepanel);
+       frame.add(thepanel);
+       frame.setSize(1100,900);
+       frame.setLocationRelativeTo(null);
+       frame.setVisible(true);
+       frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        	   
+       frame.add(button1);
+       button1.doClick();
+       frame.add(button2);
+       button2.doClick();
+	   }
+   
+   public int generateRandom(int lastRandomNumber) {
+	    int randomNumber;
+	    do {
+	        randomNumber = rand.nextInt((52-1)+1)+1;
+	    } while (randomNumber == lastRandomNumber);
+	    lastRandomNumber = randomNumber;
+	    return randomNumber;
+	}
+   
+   }
+
+
+
+  
+
